@@ -127,6 +127,7 @@ example("range") {
  ## repeatElement
  Creates an `Observable` sequence that emits the given element indefinitely. [More info](http://reactivex.io/documentation/operators/repeat.html)
  */
+// 无限循环创建信号
 example("repeatElement") {
     let disposeBag = DisposeBag()
     
@@ -141,6 +142,7 @@ example("repeatElement") {
  ## generate
  Creates an `Observable` sequence that generates values for as long as the provided condition evaluates to `true`.
  */
+// 只要满足条件就一直创建信号
 example("generate") {
     let disposeBag = DisposeBag()
     
@@ -157,6 +159,7 @@ example("generate") {
  ## deferred
  Creates a new `Observable` sequence for each subscriber. [More info](http://reactivex.io/documentation/operators/defer.html)
  */
+// 每添加一个新的 subscriber，都会创建一个新的 signal 与之对应
 example("deferred") {
     let disposeBag = DisposeBag()
     var count = 1
@@ -199,6 +202,7 @@ example("error") {
  ## doOn
  Invokes a side-effect action for each emitted event and returns (passes through) the original event. [More info](http://reactivex.io/documentation/operators/do.html)
  */
+// 每次创建新的信号，都会执行额外的一些代码
 example("doOn") {
     let disposeBag = DisposeBag()
     

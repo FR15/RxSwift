@@ -31,6 +31,10 @@ All of these various systems makes our code needlessly complex. Wouldn't it be b
  * The `ObservableType.subscribe(_:)` method is equivalent to `Sequence.makeIterator()`.
  * `ObservableType.subscribe(_:)` takes an observer (`ObserverType`) parameter, which will be subscribed to automatically receive sequence events and elements emitted by the `Observable`, instead of manually calling `next()` on the returned generator.
  */
+// 和 RAC 比较：
+// Observable 和 RACSignal 一样，可以理解为不断的产生信号的信号源
+// 在 create block 中都是传递一个 subscriber\observer  对象, 通过该对象来 send value
+// 并返回一个 RACDisposable\Disposable 对象，用来销毁资源
 /*:
  If an `Observable` emits a next event (`Event.next(Element)`), it can continue to emit more events. However, if the `Observable` emits either an error event (`Event.error(ErrorType)`) or a completed event (`Event.completed`), the `Observable` sequence cannot emit additional events to the subscriber.
 
@@ -53,6 +57,10 @@ All of these various systems makes our code needlessly complex. Wouldn't it be b
  
  `Observable`s will not execute their subscription closure unless there is a subscriber. In the following example, the closure of the `Observable` will never be executed, because there are no subscribers:
  */
+
+// 同 RAC 一样
+// Observable 只有被订阅时，才会调用 create block
+
 example("Observable with no subscribers") {
     _ = Observable<String>.create { observerOfString -> Disposable in
         print("This will never be printed")
