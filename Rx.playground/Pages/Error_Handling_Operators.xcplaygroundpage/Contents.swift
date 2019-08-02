@@ -65,6 +65,7 @@ example("catchError") {
  Recovers repeatedly Error events by resubscribing to the `Observable` sequence, indefinitely. [More info](http://reactivex.io/documentation/operators/retry.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/retry.png)
  */
+// 遇到报错重新订阅重新执行
 example("retry") {
     let disposeBag = DisposeBag()
     var count = 1

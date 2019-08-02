@@ -17,6 +17,7 @@ playgroundShouldContinueIndefinitely()
  #
  Before learning about connectable operators, let's take a look at an example of a non-connectable operator:
 */
+// 被订阅时并不会发出信号， 只有调用 connect() 才会
 func sampleWithoutConnectableOperators() {
     printExampleHeader(#function)
     
@@ -72,6 +73,7 @@ func sampleWithPublish() {
  Converts the source `Observable` sequence into a connectable sequence, and will replay `bufferSize` number of previous emissions to each new subscriber. [More info](http://reactivex.io/documentation/operators/replay.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/replay.png)
  */
+// 会回放之前的5个信号对每个新订阅者
 func sampleWithReplayBuffer() {
     printExampleHeader(#function)
     

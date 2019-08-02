@@ -15,6 +15,7 @@ import RxSwift
  Converts an `Observable` sequence into an array, emits that array as a new single-element `Observable` sequence, and then terminates. [More info](http://reactivex.io/documentation/operators/to.html)
  ![](http://reactivex.io/documentation/operators/images/to.c.png)
  */
+// 合成一个数组作为一个信号发出
 example("toArray") {
     let disposeBag = DisposeBag()
     
@@ -62,9 +63,9 @@ example("concat") {
     subjectsSubject.onNext(subject2)
     
     subject2.onNext("I would be ignored")
-    subject2.onNext("🐱")
+    subject2.onNext("🐱") // 这个也会被忽略，因为 BehaviorSubject 的特性会保留一个值
     
-    subject1.onCompleted()
+    subject1.onCompleted() // 只有这个执行完，subjectsSubject 才会发出 subject2 的信号
     
     subject2.onNext("🐭")
 }

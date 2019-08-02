@@ -34,6 +34,7 @@ example("filter") {
  Suppresses sequential duplicate elements emitted by an `Observable` sequence. [More info](http://reactivex.io/documentation/operators/distinct.html)
 ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/distinct.png)
 */
+// 过滤重复的信号
 example("distinctUntilChanged") {
     let disposeBag = DisposeBag()
     
@@ -48,6 +49,7 @@ example("distinctUntilChanged") {
  Emits only the element at the specified index of all elements emitted by an `Observable` sequence. [More info](http://reactivex.io/documentation/operators/elementat.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/elementat.png)
  */
+// 发出指定位置的信号
 example("elementAt") {
     let disposeBag = DisposeBag()
     
@@ -122,6 +124,7 @@ example("takeLast") {
  Emits elements from the beginning of an `Observable` sequence as long as the specified condition evaluates to `true`. [More info](http://reactivex.io/documentation/operators/takewhile.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/takewhile.png)
  */
+// 满足条件就 take
 example("takeWhile") {
     let disposeBag = DisposeBag()
     
@@ -136,6 +139,7 @@ example("takeWhile") {
  Emits elements from a source `Observable` sequence until a reference `Observable` sequence emits an element. [More info](http://reactivex.io/documentation/operators/takeuntil.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/takeuntil.png)
  */
+// 一直发出信号直到 另一个信号源发出就不在发出信号
 example("takeUntil") {
     let disposeBag = DisposeBag()
     

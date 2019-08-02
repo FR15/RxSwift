@@ -32,6 +32,9 @@ example("startWith") {
  Combines elements from source `Observable` sequences into a single new `Observable` sequence, and will emit each element as it is emitted by each source `Observable` sequence. [More info](http://reactivex.io/documentation/operators/merge.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/merge.png)
  */
+
+// 将多个信号源发送的信号变成一个线性的
+// 可以理解为 多个管道并排着放水，最后水通过一个管道流出
 example("merge") {
     let disposeBag = DisposeBag()
     
@@ -61,6 +64,9 @@ example("merge") {
  Combines up to 8 source `Observable` sequences into a single new `Observable` sequence, and will emit from the combined `Observable` sequence the elements from each of the source `Observable` sequences at the corresponding index. [More info](http://reactivex.io/documentation/operators/zip.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/zip.png)
  */
+// 可以理解为 有 n 个信号源
+// 每个信号源对应一个数组，数组承载信号
+// 只有每个数组都有信号时，才会取出所有数组的第一个信号，然后组成一个元组发出一个总的信号
 example("zip") {
     let disposeBag = DisposeBag()
     
@@ -89,6 +95,10 @@ example("zip") {
  Combines up to 8 source `Observable` sequences into a single new `Observable` sequence, and will begin emitting from the combined `Observable` sequence the latest elements of each source `Observable` sequence once all source sequences have emitted at least one element, and also when any of the source `Observable` sequences emits a new element. [More info](http://reactivex.io/documentation/operators/combinelatest.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/combinelatest.png)
  */
+
+// 可以理解为 有 n 个信号源
+// 每个信号源对应一个对象，这个对象只会存储最新的信号
+// 只有每个对象都有值时，才会取出所有对象的值，然后组成一个元组发出一个总的信号
 example("combineLatest") {
     let disposeBag = DisposeBag()
     
@@ -117,7 +127,7 @@ example("Array.combineLatest") {
     let stringObservable = Observable.just("❤️")
     let fruitObservable = Observable.from(["🍎", "🍐", "🍊"])
     let animalObservable = Observable.of("🐶", "🐱", "🐭", "🐹")
-    
+    // 这三个信号源不是同时发出信号，而是依次发出信号，顺序 1，2，3，直到它不能发出信号为止
     Observable.combineLatest([stringObservable, fruitObservable, animalObservable]) {
             "\($0[0]) \($0[1]) \($0[2])"
         }
@@ -131,6 +141,8 @@ example("Array.combineLatest") {
  Transforms the elements emitted by an `Observable` sequence into `Observable` sequences, and emits elements from the most recent inner `Observable` sequence. [More info](http://reactivex.io/documentation/operators/switch.html)
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/switch.png)
  */
+// 相当于2个水管，还有一个水管，这个水管一次只能接入一个水管
+// 中间可以切换水管
 example("switchLatest") {
     let disposeBag = DisposeBag()
     
