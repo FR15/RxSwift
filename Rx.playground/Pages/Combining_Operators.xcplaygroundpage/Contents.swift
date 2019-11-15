@@ -65,7 +65,7 @@ example("merge") {
  ![](https://raw.githubusercontent.com/kzaher/rxswiftcontent/master/MarbleDiagrams/png/zip.png)
  */
 // 可以理解为 有 n 个信号源
-// 每个信号源对应一个数组，数组承载信号
+// 每个信号源对应一个数组，数组先缓存信号
 // 只有每个数组都有信号时，才会取出所有数组的第一个信号，然后组成一个元组发出一个总的信号
 example("zip") {
     let disposeBag = DisposeBag()
@@ -97,8 +97,8 @@ example("zip") {
  */
 
 // 可以理解为 有 n 个信号源
-// 每个信号源对应一个对象，这个对象只会存储最新的信号
-// 只有每个对象都有值时，才会取出所有对象的值，然后组成一个元组发出一个总的信号
+// 每个信号源会缓存其当前最新的信号
+// 只有当每个信号源都有缓存的信号时，才会取出所有对象的值，然后组成一个元组发出一个总的信号
 example("combineLatest") {
     let disposeBag = DisposeBag()
     

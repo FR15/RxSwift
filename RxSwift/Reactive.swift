@@ -21,7 +21,8 @@
  `Base` and not just specialized on common base type.
 
  */
-
+// 持有一个类型的实例
+// 就是给 实例 包一层
 public struct Reactive<Base> {
     /// Base object to extend.
     public let base: Base
@@ -35,6 +36,8 @@ public struct Reactive<Base> {
 }
 
 /// A type that has reactive extensions.
+// rx 本质是 Reactive 类型
+// 但是内部持有的实例才是真正的 使用的东西
 public protocol ReactiveCompatible {
     /// Extended type
     associatedtype ReactiveBase

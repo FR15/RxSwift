@@ -9,7 +9,7 @@
 class Sink<Observer: ObserverType> : Disposable {
     fileprivate let _observer: Observer
     fileprivate let _cancel: Cancelable
-    private let _disposed = AtomicInt(0)
+    private let _disposed = AtomicInt(0) // 初始化一个锁
 
     #if DEBUG
         private let _synchronizationTracker = SynchronizationTracker()
@@ -31,6 +31,7 @@ class Sink<Observer: ObserverType> : Disposable {
         if isFlagSet(self._disposed, 1) {
             return
         }
+        //
         self._observer.on(event)
     }
 

@@ -11,13 +11,17 @@ class Producer<Element> : Observable<Element> {
         super.init()
     }
 
+    // observer 其实是 AnonymousObserver 实例
     override func subscribe<Observer: ObserverType>(_ observer: Observer) -> Disposable where Observer.Element == Element {
         if !CurrentThreadScheduler.isScheduleRequired {
             // The returned disposable needs to release all references once it was disposed.
             let disposer = SinkDisposer()
+            // 此时，self 是 AnonymousObservable 的实例
+            // so，run 是 AnonymousObservable 的方法
             let sinkAndSubscription = self.run(observer, cancel: disposer)
             disposer.setSinkAndSubscription(sink: sinkAndSubscription.sink, subscription: sinkAndSubscription.subscription)
 
+            
             return disposer
         }
         else {

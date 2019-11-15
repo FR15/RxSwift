@@ -8,6 +8,9 @@
 
 import class Foundation.NSLock
 
+// @inline(__always) 内联函数
+// https://juejin.im/post/5cd67d64518825686244635a
+
 final class AtomicInt: NSLock {
     fileprivate var value: Int32
     public init(_ value: Int32 = 0) {

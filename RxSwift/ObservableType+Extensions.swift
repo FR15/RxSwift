@@ -17,8 +17,13 @@ extension ObservableType {
      - parameter on: Action to invoke for each event in the observable sequence.
      - returns: Subscription object used to unsubscribe from the observable sequence.
      */
+    // class Observable 没有实现该方法
+    // 所以会调用此方法
     public func subscribe(_ on: @escaping (Event<Element>) -> Void)
         -> Disposable {
+            
+            // 创建了 AnonymousObserver
+            // 并且 内部持有了 闭包
             let observer = AnonymousObserver { e in
                 on(e)
             }

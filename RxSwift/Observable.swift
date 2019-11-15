@@ -19,7 +19,9 @@ public class Observable<Element> : ObservableType {
     public func subscribe<Observer: ObserverType>(_ observer: Observer) -> Disposable where Observer.Element == Element {
         rxAbstractMethod()
     }
-    
+    // ObservableType 协议 的扩展中实现了此方法
+    // 如果 Observable 没有实现此方法，才会调用 扩展里的是实现
+    // 否则就调用此方法
     public func asObservable() -> Observable<Element> {
         return self
     }

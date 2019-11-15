@@ -18,6 +18,7 @@ final class AnonymousObserver<Element>: ObserverBase<Element> {
         self._eventHandler = eventHandler
     }
 
+    // 这里就是调用 闭包
     override func onCore(_ event: Event<Element>) {
         return self._eventHandler(event)
     }

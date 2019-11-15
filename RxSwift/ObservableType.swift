@@ -31,6 +31,7 @@ public protocol ObservableType: ObservableConvertibleType {
     
     - returns: Subscription for `observer` that can be used to cancel production of sequence elements and free resources.
     */
+    // 这里是通过 泛型，传入了一个 ObserverType
     func subscribe<Observer: ObserverType>(_ observer: Observer) -> Disposable where Observer.Element == Element
 }
 
